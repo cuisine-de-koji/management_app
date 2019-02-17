@@ -1,0 +1,23 @@
+h1 会社詳細
+
+.nav.justify-content-end
+  = link_to '一覧', companies_path, class: 'nav-link'
+table.table.table-hover
+  tbody
+    tr
+      th= Company.human_attribute_name(:id)
+      td= @company.id
+    tr
+      th= Company.human_attribute_name(:name)
+      td= @company.name
+    tr
+      th= Company.human_attribute_name(:description)
+      td= simple_format(h(@company.description), {}, sanitize: false, wrapper_tag: "div")
+    tr
+      th= Company.human_attribute_name(:created_at)
+      td= @company.created_at
+    tr
+      th= Company.human_attribute_name(:updated_at)
+      td= @company.updated_at
+= link_to '編集', edit_company_path, class: 'btn btn-primary mr-3'
+= link_to '削除', @company, method: :delete, data: { confirm: "[#{@company.name}]を削除します。よろしいですか？" }, class: 'btn btn-danger'
