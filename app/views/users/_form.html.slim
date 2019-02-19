@@ -1,0 +1,16 @@
+- if user.errors.present?
+ul#error_explanation
+  - user.errors.full_messages.each do |message|
+    li = message
+
+= form_with model: user, local: true do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control', id: 'user_name'
+  .form-group
+    = f.label :job_category
+    = f.text_area :job_category, rows: 2, class: 'form-control', id: 'user_job_category'
+  .form-group
+    = f.label :self_introduction
+    = f.text_area :self_introduction, rows: 5, class: 'form-control', id: 'user_sefl_introduction'
+  = f.submit nil, class: 'btn btn-primary'
