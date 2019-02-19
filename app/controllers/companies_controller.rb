@@ -16,9 +16,13 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    company = Company.new(company_params)
-    company.save!
-    redirect_to companies_url, notice: "「#{company.name}」を登録しました。"
+    @company = Company.new(company_params)
+
+    if @company.save!
+      redirect_to @company, notice: "「#{@company.name}」を登録しました。"
+    else
+      render :new
+    end
   end
 
   def update
