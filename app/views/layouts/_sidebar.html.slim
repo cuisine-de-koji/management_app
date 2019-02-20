@@ -1,0 +1,8 @@
+.listings
+  .listings_channels
+    h1.listings_header = link_to @current_company.name, company_path(@current_company.id)
+    ul.channel_list
+      = sidebar_link_item('dashboard','#')
+      = sidebar_link_item('所属エンジニア一覧', users_path)
+      = sidebar_link_item('案件一覧', "#")
+      = sidebar_link_item('経歴書一覧', "#")

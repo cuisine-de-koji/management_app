@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = current_company.users
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_company.users.find(params[:id])
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_company.users.find(params[:id])
   end
 
   def new
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = current_company.users.new(user_params)
 
     if @user.save!
       redirect_to @user, notice: "「#{@user.name}」を登録しました。"
@@ -26,13 +26,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
+    user = current_company.users.find(params[:id])
     user.update!(user_params)
     redirect_to users_url, notice: "ユーザー「#{user.name}」を更新しました。"
   end
 
   def destroy
-    user = User.find(params[:id])
+    user = current_company.users.find(params[:id])
     user.destroy
     redirect_to users_url, notice: "ユーザー「#{user.name}」を削除しました。"
   end
