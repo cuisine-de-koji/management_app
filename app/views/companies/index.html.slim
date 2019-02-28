@@ -6,13 +6,20 @@ h1 会社一覧
 table.table.table-hover
   thead.thead-default
     tr
+      th= Company.human_attribute_name(:image)
       th= Company.human_attribute_name(:name)
+      th= '会社の種類'
       th= Company.human_attribute_name(:created_at)
       th
   tbody
     - @companies.each do |company|
       tr
+        - if company.image.url
+          td= image_tag company.image.url, :size => "45x45"
+
+
         td= link_to company.name, company
+        td= company.com_type
         td= company.created_at
         td
           = link_to '編集', edit_company_path(company), class: 'btn btn-primary mr-3'

@@ -67,3 +67,5 @@ gem 'html2slim'
 gem 'bootstrap'
 #画像アップロード
 gem 'carrierwave'
+gem 'rmagick'
+gem 'ransack'

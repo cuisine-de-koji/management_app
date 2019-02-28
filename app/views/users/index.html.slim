@@ -6,14 +6,16 @@ h1 ユーザー一覧
 table.table.table-hover
   thead.thead-default
     tr
-      th= User.human_attribute_name(:name)
-      th= User.human_attribute_name(:job_category)
+      th= '名前'
+      th= '性別'
+      th= '所属'
       th
   tbody
     - @users.each do |user|
       tr
         td= link_to user.name, user
-        td= user.job_category
+        td= user.sex
+        td= user.company.name
         td
           = link_to '編集', edit_user_path(user), class: 'btn btn-primary mr-3'
           = link_to '削除', user, method: :delete, data: { confirm: "ユーザー「#{user.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'

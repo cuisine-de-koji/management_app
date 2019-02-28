@@ -9,12 +9,12 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     .app-title.navbar.navbar-expand-md.navbar-light.bg-light
-      .navbar-brand 管理くん
+      .navbar-brand 声優プロダクションとアニメ制作会社のマッチングアプリ
       ul.navbar-nav.ml-auto
             - if current_company
               li.nav-item= link_to '会社一覧', companies_path, class: 'nav-link'
               - if current_company
-                li.nav-item= link_to 'ユーザー一覧', users_path, class: 'nav-link'
+                li.nav-item= link_to '声優一覧', users_path, class: 'nav-link'
               li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
             - else
               li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
