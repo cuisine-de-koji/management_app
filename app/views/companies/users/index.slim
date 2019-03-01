@@ -1,0 +1,23 @@
+
+
+h1 ユーザー一覧
+
+= link_to '新規登録', new_user_path, class: 'btn btn-primary'
+
+.mb-3
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= '名前'
+      th= '性別'
+      th= '所属'
+      th
+  tbody
+    - @users.each do |user|
+      tr
+        td= link_to user.name, company_user_path(:id => user.id)
+        td= user.sex
+        td= user.company.name
+        td
+          = link_to '編集', edit_user_path(user), class: 'btn btn-primary mr-3' if @current_company.id == params[:company_id]
+          = link_to '削除', user, method: :delete, data: { confirm: "ユーザー「#{user.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger' if @current_company.id == params[:company_id]

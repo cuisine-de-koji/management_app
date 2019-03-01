@@ -1,0 +1,2 @@
+module KeirekisyosHelper
+end

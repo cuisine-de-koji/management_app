@@ -1,14 +1,14 @@
-class UsersController < ApplicationController
+class Companies::UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = Company.find(params[:company_id]).users
   end
 
   def show
-    @user = current_company.users.find(params[:id])
+    @user = Company.find(params[:company_id]).users.find(params[:id])
   end
 
   def edit
-    @user = current_company.users.find(params[:id])
+    @user = current_company.users.find(params[:user_id])
   end
 
   def new
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @user = current_company.users.new(user_params)
 
     if @user.save!
-      redirect_to company_user_path(company_id: current_company.id, :id => @user.id), notice: "「#{@user.name}」を登録しました。"
+      redirect_to @user, notice: "「#{@user.name}」を登録しました。"
     else
       render :new
     end
@@ -42,4 +42,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :sex, :self_introduction)
   end
+
 end

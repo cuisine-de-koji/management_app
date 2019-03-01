@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   get '/login',                   to: 'sessions#new'
   post '/login',                  to: 'sessions#create'
   delete '/logout',               to: 'sessions#destroy'
-  resources :companies
+  resources :companies do
+    resources :users, controller: 'companies/users' do
+      resources :keirekisyo, controller: 'companies/users/keirekisyo'
+    end
+  end
   resources :users
+  # resources :keirekisyos
 end

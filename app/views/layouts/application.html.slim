@@ -14,7 +14,7 @@ html
             - if current_company
               li.nav-item= link_to '会社一覧', companies_path, class: 'nav-link'
               - if current_company
-                li.nav-item= link_to '声優一覧', users_path, class: 'nav-link'
+                li.nav-item= link_to '声優一覧(全て)', users_path, class: 'nav-link'
               li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
             - else
               li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'

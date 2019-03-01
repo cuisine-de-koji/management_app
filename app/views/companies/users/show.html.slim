@@ -1,7 +1,7 @@
-h1 ユーザー詳細
+h1 声優詳細
 
 .nav.justify-content-end
-  = link_to '一覧', users_path, class: 'nav-link'
+  = link_to '一覧', company_users_path(@current_company), class: 'nav-link'
 table.table.table-hover
   tbody
     tr
@@ -31,5 +31,6 @@ table.table.table-hover
     tr
       th= User.human_attribute_name(:updated_at)
       td= @user.updated_at
-= link_to '編集', edit_user_path, class: 'btn btn-primary mr-3'
-= link_to '削除', @user, method: :delete, data: { confirm: "[#{@user.name}]を削除します。よろしいですか？" }, class: 'btn btn-danger'
+= link_to '経歴書', new_company_user_keirekisyo_path(company_id: params[:company_id], user_id: params[:id]), class: 'nav-link',class: 'btn btn-success mr-3'
+= link_to '編集', edit_user_path, class: 'btn btn-primary mr-3' if @user.company == current_company
+= link_to '削除', @user, method: :delete, data: { confirm: "[#{@user.name}]を削除します。よろしいですか？" }, class: 'btn btn-danger' if @user.company == current_company

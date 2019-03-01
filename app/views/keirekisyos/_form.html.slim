@@ -1,0 +1,19 @@
+- if keirekisyo.errors.present?
+ul#error_explanation
+  - keirekisyo.errors.full_messages.each do |message|
+    li = message
+
+= form_with model: keirekisyo, local: true do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control', id: 'keirekisyo_name'
+  .form-group
+    = f.label :kakoyaku
+    = f.text_area :kakoyaku, rows: 5, class: 'form-control', id: 'user_sefl_introduction'
+  .form-group
+    = f.label :tokugi
+    = f.text_area :tokugi, rows: 5, class: 'form-control', id: 'user_sefl_introduction'
+  .form-group
+    = f.label :food
+    = f.text_area :food, rows: 5, class: 'form-control', id: 'user_sefl_introduction'
+  = f.submit nil, class: 'btn btn-primary'

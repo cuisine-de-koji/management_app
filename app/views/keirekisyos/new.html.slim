@@ -1,0 +1,5 @@
+h1 経歴書の新規登録
+
+.nav.justify-content-end
+  = link_to @current_company.users.find(params[:user_id]).name, company_user_path(company_id: params[:company_id], id: params[:user_id]), class: 'nav-link'
+= render partial: 'form', locals: { keirekisyo: @keirekisyo }
