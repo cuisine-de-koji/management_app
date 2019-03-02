@@ -5,6 +5,6 @@
       = link_to @current_company.name, company_path(@current_company.id)
     ul.channel_list
       = sidebar_link_item('dashboard','#')
-      = sidebar_link_item('所属声優一覧', company_users_path(@current_company))
+      = sidebar_link_item('所属声優一覧', company_users_path(company_id: @current_company.id)) if current_company
       = sidebar_link_item('案件一覧', "#")
       /= sidebar_link_item('経歴書一覧', company_user_keirekisyo_index_path(params[:company_id]))
