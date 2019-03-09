@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     end
   end
   resources :users
-  # resources :keirekisyos
+  resources :keirekisyos
+  resources :ankens
 end

@@ -1,23 +1,26 @@
 class Companies::Users::KeirekisyoController < ApplicationController
 
   def show
-    @keirekisyo = Company.find(params[:company_id]).users.find(params[:user_id]).keirekisyo
+    @user = current_company.users.find(params[:user_id])
+    @keirekisyo = @user.keirekisyo
   end
 
   def edit
-    @keirekisyo = Company.find(params[:company_id]).users.find(params[:user_id]).keirekisyo
+    @user = current_company.users.find(params[:user_id])
+    @keirekisyo = @user.keirekisyo
   end
 
   def new
+    @user = current_company.users.find(params[:user_id])
     @keirekisyo = Keirekisyo.new
   end
 
   def create
     @user = current_company.users.find(params[:user_id])
-    @keirekisyo = @user.keirekisyo(keirekisyo_params)
+    @keirekisyo = @user.build_keirekisyo(keirekisyo_params)
 
     if @keirekisyo.save!
-      redirect_to @user, notice: "「経歴書」を登録しました。"
+      redirect_to company_user_keirekisyo_path(company_id: params[:company_id], user_id: params[:user_id], id: @keirekisyo.id), notice: "「経歴書」を登録しました。"
     else
       render :new
     end

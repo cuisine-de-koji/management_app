@@ -1,0 +1,26 @@
+h1 会社一覧
+
+= link_to '新規登録', new_company_path, class: 'btn btn-primary'
+
+.mb-3
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= Company.human_attribute_name(:image)
+      th= Company.human_attribute_name(:name)
+      th= '会社の種類'
+      th= Company.human_attribute_name(:created_at)
+      th
+  tbody
+    - @companies.each do |company|
+      tr
+        - if company.image.url
+          td= image_tag company.image.url, :size => "45x45"
+
+
+        td= link_to company.name, company
+        td= company.com_type
+        td= company.created_at
+        td
+          = link_to '編集', edit_company_path(company), class: 'btn btn-primary mr-3'
+          = link_to '削除', company, method: :delete, data: { confirm: "会社「#{company.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'

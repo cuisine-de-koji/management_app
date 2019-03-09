@@ -3,7 +3,7 @@ ul#error_explanation
   - keirekisyo.errors.full_messages.each do |message|
     li = message
 
-= form_with model: keirekisyo, local: true do |f|
+= form_with scope: :keirekisyo, url: company_user_keirekisyo_index_path, local: true do |f|
   .form-group
     = f.label :name
     = f.text_field :name, class: 'form-control', id: 'keirekisyo_name'

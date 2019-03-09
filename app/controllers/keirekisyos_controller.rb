@@ -8,12 +8,13 @@ class KeirekisyosController < ApplicationController
   end
 
   def new
+    @user = current_company.users.find(params[:user_id)
     @keirekisyo = Keirekisyo.new
   end
 
   def create
     @user = current_company.users.find(params[:id])
-    @keirekisyo = current_company.users.keirekisyos.build(keirekisyo_params)
+    @keirekisyo = @user.keirekisyos.build(keirekisyo_params)
 
     if @keirekisyo.save!
       redirect_to @user, notice: "「経歴書」を登録しました。"

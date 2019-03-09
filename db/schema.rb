@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_28_180214) do
+ActiveRecord::Schema.define(version: 2019_03_09_095515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ankens", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_ankens_on_company_id"
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string "name", null: false
@@ -36,6 +45,8 @@ ActiveRecord::Schema.define(version: 2019_02_28_180214) do
     t.text "food"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_keirekisyos_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

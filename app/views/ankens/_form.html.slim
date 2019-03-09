@@ -1,0 +1,32 @@
+- if company.errors.present?
+ul#error_explanation
+  - company.errors.full_messages.each do |message|
+    li = message
+
+= form_with model: company, local: true do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control', id: 'company_name'
+  .form-group
+    = f.label :email, 'メールアドレス'
+    = f.text_field :email, class: 'form-control'
+  = f.label :com_type, '会社の種類'
+  .form-group
+    = f.radio_button :com_type, :production
+    = f.label "声優プロダクション"
+    = f.radio_button :com_type, :animation_company
+    = f.label "アニメ制作会社"
+  .form-group
+    = f.label :description
+    = f.text_area :description, rows: 5, class: 'form-control', id: 'company_description'
+  .form-group
+    = f.label :password, 'パスワード'
+    = f.password_field :password, class: 'form-control'
+  .form-group
+    = f.label :password_confirmation, 'パスワード(確認)'
+    = f.password_field :password_confirmation, class: 'form-control'
+  .form-group
+    = f.label :image, '画像をアップロード'
+    = f.file_field :image, class: 'form-control'
+
+  = f.submit nil, class: 'btn btn-primary'

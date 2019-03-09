@@ -1,0 +1,2 @@
+class AnkensController < ApplicationController
+end

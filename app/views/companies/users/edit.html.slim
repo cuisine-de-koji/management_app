@@ -1,0 +1,6 @@
+h1 ユーザーの編集
+
+.nav.justify-content-end
+  = link_to '一覧', company_users_path(@current_company), class: 'nav-link'
+
+= render partial: 'users/form', locals: { user: @user }

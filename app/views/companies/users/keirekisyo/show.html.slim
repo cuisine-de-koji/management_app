@@ -1,0 +1,29 @@
+h1 経歴書
+
+.nav.justify-content-end
+  = link_to '一覧', '#', class: 'nav-link'
+table.table.table-hover
+  tbody
+    tr
+      th= Keirekisyo.human_attribute_name(:id)
+      td= @keirekisyo.id
+    tr
+      th= '名前'
+      td= @keirekisyo.name
+    tr
+      th= '過去演じた役'
+      td= @keirekisyo.kakoyaku
+    tr
+      th= '特技'
+      td= @keirekisyo.tokugi
+    tr
+      th= '好きな食べ物'
+      td= @keirekisyo.food
+
+    tr
+      th= User.human_attribute_name(:created_at)
+      td= @keirekisyo.created_at
+    tr
+      th= User.human_attribute_name(:updated_at)
+      td= @keirekisyo.updated_at
+= link_to '編集', edit_company_user_keirekisyo_path(@keirekisyo), class: 'btn btn-primary mr-3'

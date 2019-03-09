@@ -8,7 +8,7 @@ class Companies::UsersController < ApplicationController
   end
 
   def edit
-    @user = current_company.users.find(params[:user_id])
+    @user = current_company.users.find(params[:id])
   end
 
   def new

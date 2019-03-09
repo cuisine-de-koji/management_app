@@ -1,6 +1,7 @@
 h1 経歴書の新規登録
+声優名=  @user.name
 
 .nav.justify-content-end
-  = link_to '一覧', company_user_path(company_id: params[:company_id], id: params[:user_id]), class: 'nav-link'
+  = link_to "戻る", company_user_path(company_id: @user.company.id, id: @user.id), class: 'nav-link'
 
 = render partial: 'form', locals: { keirekisyo: @keirekisyo }

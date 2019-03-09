@@ -1,0 +1,29 @@
+h1 会社詳細
+
+.nav.justify-content-end
+table.table.table-hover
+  tbody
+    tr
+      th= Company.human_attribute_name(:id)
+      td= @company.id
+    tr
+      th= Company.human_attribute_name(:name)
+      td= @company.name
+    tr
+      th= Company.human_attribute_name(:image)
+      td= image_tag @company.image.url, :size => "45x45"
+    tr
+      th= '会社の種類'
+      td= @company.com_type
+    tr
+      th= Company.human_attribute_name(:description)
+      td= simple_format(h(@company.description), {}, sanitize: false, wrapper_tag: "div")
+    tr
+      th= Company.human_attribute_name(:created_at)
+      td= @company.created_at
+    tr
+      th= Company.human_attribute_name(:updated_at)
+      td= @company.updated_at
+= link_to '所属するエンジニア', company_users_path(@company.id), class: 'nav-link',class: 'btn btn-success mr-3' if current_company == @company
+= link_to '編集', edit_company_user_path(@company.id), class: 'btn btn-primary mr-3'
+= link_to '削除', @company, method: :delete, data: { confirm: "[#{@company.name}]を削除します。よろしいですか？" }, class: 'btn btn-danger'
